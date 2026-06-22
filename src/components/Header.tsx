@@ -72,15 +72,24 @@ export function Header() {
           </a>
         </div>
 
-        <button
-          type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-brand-navy hover:bg-slate-100 lg:hidden"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
-        >
-          {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); handleNav('#contact'); }}
+            className="btn-primary px-4 py-2.5 text-sm"
+          >
+            Request AMC Quote
+          </a>
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-brand-navy hover:bg-slate-100"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
