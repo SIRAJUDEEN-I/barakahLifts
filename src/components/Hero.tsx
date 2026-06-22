@@ -100,7 +100,7 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent" />
           </div>
 
-          {/* Floating trust cards */}
+          {/* Floating trust cards — desktop: absolute floating; mobile: hidden */}
           {FLOATING_CARDS.map((c, i) => {
             const Icon = c.icon;
             const positions = [
@@ -114,9 +114,7 @@ export function Hero() {
                 className={`animate-float hidden sm:block ${positions[i]}`}
                 style={{ animationDelay: c.delay }}
               >
-                <div className="card flex items-center gap-3 px-4 py-3 backdrop-blur-md"
-                  style={{ minWidth: '210px' }}
-                >
+                <div className="card flex items-center gap-3 px-4 py-3 backdrop-blur-md" style={{ minWidth: '210px' }}>
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-lightBlue text-brand-primary">
                     <Icon className="h-5 w-5" />
                   </span>
@@ -128,6 +126,24 @@ export function Hero() {
               </div>
             );
           })}
+
+          {/* Trust cards strip — mobile only */}
+          <div className="mt-5 flex gap-3 overflow-x-auto pb-1 sm:hidden" style={{ scrollbarWidth: 'none' }}>
+            {FLOATING_CARDS.map((c) => {
+              const Icon = c.icon;
+              return (
+                <div key={c.title} className="card flex shrink-0 items-center gap-3 px-4 py-3" style={{ minWidth: '200px' }}>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-lightBlue text-brand-primary">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-bold text-brand-navy leading-tight">{c.title}</p>
+                    <p className="text-xs text-slate-500">{c.sub}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
           {/* Bottom stat badge */}
           <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0">
